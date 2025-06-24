@@ -1,0 +1,14 @@
+[
+    {
+        "ServiceLanguage": "Js",
+        "ServiceName": "Sample",
+        "ServiceFolderName": "service_SampleService",
+        "ServiceFileName": "sample-service.py",
+        "ServiceHttpHost": "127.0.0.1",
+        "ServiceHttpPriviledgedIpAddress": [
+            "192.168.0.1"
+        ],
+        "ServiceHttpPort": 9090,
+        "ServiceType": "HTTP_SERVICE"
+    }
+]
