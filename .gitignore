@@ -2,3 +2,5 @@ Logs
 vectorDBFormat.json
 Avatars/*
 node_modules
+pg-data/
+pg-admin-data/

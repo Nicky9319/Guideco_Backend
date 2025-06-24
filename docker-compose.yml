@@ -12,7 +12,7 @@ services:
       POSTGRES_PASSWORD: guideco
       POSTGRES_DB: GuideCO
     volumes:
-      - /pgdata:/var/lib/postgresql/data
+      - /home/paarth/guideco_mainServer/pg-data:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
@@ -26,7 +26,7 @@ services:
     depends_on:
       - postgres
     volumes:
-      - pgadmin-data:/var/lib/pgadmin
+      - /home/paarth/guideco_mainServer/pg-admin-data:/var/lib/pgadmin
 
   rabbitmq:
     image: rabbitmq:3-management
