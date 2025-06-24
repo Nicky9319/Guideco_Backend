@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 class HTTP_SERVER {
   constructor(httpServerHost, httpServerPort, httpServerPrivilegedIpAddress = ["127.0.0.1"], dataClassInstance = null, enableCors = true) {
     this.app = express();
