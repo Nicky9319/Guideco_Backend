@@ -1,1 +1,0 @@
-tar --exclude='node_modules' -czf - * | ssh paarth@64.227.142.165 'cd /home/paarth/GuideCo/ && tar -xzf -'
