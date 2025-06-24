@@ -1,14 +1,14 @@
 [
     {
         "ServiceLanguage": "Js",
-        "ServiceName": "Sample",
-        "ServiceFolderName": "service_SampleService",
-        "ServiceFileName": "sample-service.py",
+        "ServiceName": "PostgresDB",
+        "ServiceFolderName": "service_PostgresDBService",
+        "ServiceFileName": "postgres-db-service.js",
         "ServiceHttpHost": "127.0.0.1",
         "ServiceHttpPriviledgedIpAddress": [
-            "192.168.0.1"
+            "127.0.0.1"
         ],
-        "ServiceHttpPort": 9090,
+        "ServiceHttpPort": 20000,
         "ServiceType": "HTTP_SERVICE"
     }
 ]
