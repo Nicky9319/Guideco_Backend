@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 function startService() {
     const dataClass = new Data();
 
-    const httpServerPort = 9090;
+    const httpServerPort = 20000;
     const httpServerHost = "127.0.0.1";
     const httpServerPrivilegedIpAddress = ["192.168.0.1"];
 
