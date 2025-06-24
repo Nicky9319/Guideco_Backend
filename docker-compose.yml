@@ -1,0 +1,40 @@
+version: "3.3"
+
+services:
+  postgres:
+    image: postgres:12
+    container_name: my-postgres
+    restart: "no"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: GuideCO
+      POSTGRES_PASSWORD: guideco
+      POSTGRES_DB: GuideCO
+    volumes:
+      - /pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: my-pgadmin
+    restart: "no"
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbit-server
+    restart: "no"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  pgadmin-data:

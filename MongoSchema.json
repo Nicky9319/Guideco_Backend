@@ -1,0 +1,267 @@
+{
+    "COACHES": {
+        "type": "Collection",
+        "fields": {
+            "_id": {
+                "type": "ObjectId",
+                "required": true,
+                "primary": true,
+                "description": "Unique identifier for the coach document."
+            },
+            "COACH_ID": {
+                "type": "String",
+                "required": true,
+                "unique": true,
+                "description": "Unique coach identifier."
+            },
+            "NAME": {
+                "type": "String",
+                "required": true
+            },
+            "EMAIL": {
+                "type": "String",
+                "required": true,
+                "unique": true
+            },
+            "CREATED_AT": {
+                "type": "Date",
+                "required": true,
+                "description": "Document creation timestamp."
+            },
+            "UPDATED_AT": {
+                "type": "Date",
+                "required": false,
+                "description": "Document last update timestamp."
+            }
+        },
+        "indexes": [
+            {
+                "fields": [
+                    "EMAIL"
+                ],
+                "unique": true
+            },
+            {
+                "fields": [
+                    "COACH_ID"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "USER_PROFILE": {
+        "type": "Collection",
+        "fields": {
+            "_id": {
+                "type": "ObjectId",
+                "required": true,
+                "primary": true,
+                "description": "Unique identifier for the user profile document."
+            },
+            "USER_ID": {
+                "type": "String",
+                "required": true,
+                "unique": true,
+                "description": "Unique user identifier."
+            },
+            "USERNAME": {
+                "type": "String",
+                "required": true
+            },
+            "EMAIL": {
+                "type": "String",
+                "required": true,
+                "unique": true
+            },
+            "PHONE_NUMBER": {
+                "type": "String",
+                "required": true
+            },
+            "CREATED_AT": {
+                "type": "Date",
+                "required": true,
+                "description": "Document creation timestamp."
+            },
+            "UPDATED_AT": {
+                "type": "Date",
+                "required": false,
+                "description": "Document last update timestamp."
+            }
+        },
+        "indexes": [
+            {
+                "fields": [
+                    "EMAIL"
+                ],
+                "unique": true
+            },
+            {
+                "fields": [
+                    "USER_ID"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "PAYMENT": {
+        "type": "Collection",
+        "fields": {
+            "_id": {
+                "type": "ObjectId",
+                "required": true,
+                "primary": true,
+                "description": "Unique identifier for the payment document."
+            },
+            "USER_ID": {
+                "type": "ObjectId",
+                "required": true,
+                "description": "Reference to the USER_PROFILE _id."
+            },
+            "CREDIT_CARDS": {
+                "type": "Array",
+                "items": {
+                    "type": "Object",
+                    "fields": {
+                        "CARD_NUMBER": {
+                            "type": "String",
+                            "required": true
+                        },
+                        "EXPIRY_DATE": {
+                            "type": "String",
+                            "required": true
+                        },
+                        "CARDHOLDER_NAME": {
+                            "type": "String",
+                            "required": true
+                        },
+                        "CARD_TYPE": {
+                            "type": "String",
+                            "required": false,
+                            "description": "Type of credit card (e.g., VISA, MASTERCARD)."
+                        }
+                    }
+                }
+            },
+            "DEBIT_CARDS": {
+                "type": "Array",
+                "items": {
+                    "type": "Object",
+                    "fields": {
+                        "CARD_NUMBER": {
+                            "type": "String",
+                            "required": true
+                        },
+                        "EXPIRY_DATE": {
+                            "type": "String",
+                            "required": true
+                        },
+                        "CARDHOLDER_NAME": {
+                            "type": "String",
+                            "required": true
+                        },
+                        "CARD_TYPE": {
+                            "type": "String",
+                            "required": false,
+                            "description": "Type of debit card (e.g., VISA ELECTRON)."
+                        }
+                    }
+                }
+            },
+            "CREATED_AT": {
+                "type": "Date",
+                "required": true,
+                "description": "Document creation timestamp."
+            },
+            "UPDATED_AT": {
+                "type": "Date",
+                "required": false,
+                "description": "Document last update timestamp."
+            }
+        },
+        "indexes": [
+            {
+                "fields": [
+                    "USER_ID"
+                ],
+                "unique": false
+            }
+        ]
+    },
+    "CHAT_INTERACTION": {
+        "type": "Collection",
+        "fields": {
+            "_id": {
+                "type": "ObjectId",
+                "required": true,
+                "primary": true,
+                "description": "Unique identifier for the chat interaction document."
+            },
+            "CHAT_ID": {
+                "type": "String",
+                "required": true,
+                "unique": true,
+                "description": "Unique identifier for the chat session."
+            },
+            "USER_ID": {
+                "type": "ObjectId",
+                "required": true,
+                "description": "Reference to the USER_PROFILE _id."
+            },
+            "COACH_ID": {
+                "type": "ObjectId",
+                "required": true,
+                "description": "Reference to the COACHES _id."
+            },
+            "MESSAGES": {
+                "type": "Array",
+                "required": true,
+                "items": {
+                    "type": "Object",
+                    "fields": {
+                        "MESSAGE": {
+                            "type": "String",
+                            "required": true
+                        },
+                        "TIMESTAMP": {
+                            "type": "Date",
+                            "required": true
+                        },
+                        "ROLE": {
+                            "type": "String",
+                            "required": true,
+                            "description": "Sender's role (e.g., USER, COACH)."
+                        }
+                    }
+                }
+            },
+            "CREATED_AT": {
+                "type": "Date",
+                "required": true,
+                "description": "Document creation timestamp."
+            },
+            "UPDATED_AT": {
+                "type": "Date",
+                "required": false,
+                "description": "Document last update timestamp."
+            }
+        },
+        "indexes": [
+            {
+                "fields": [
+                    "CHAT_ID"
+                ],
+                "unique": true
+            },
+            {
+                "fields": [
+                    "USER_ID"
+                ]
+            },
+            {
+                "fields": [
+                    "COACH_ID"
+                ]
+            }
+        ]
+    }
+}

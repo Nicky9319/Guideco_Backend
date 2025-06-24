@@ -1,0 +1,42 @@
+{
+  "name": "guide-co-project",
+  "version": "1.0.0",
+  "description": "Microservices Server Template",
+  "main": "index.js",
+  "scripts": {
+    "start-main": "node service_MainServer/mainServer.js",
+    "start-auth": "node service_AuthService/authService.js",
+    "start-chat": "node service_ChatService/chatService.js",
+    "start-payment": "node service_PaymentService/paymentService.js",
+    "start-postgres": "node service_PostgresDBService/postgresDBService.js",
+    "start-webserver": "node service_WebServer/webServer.js",
+    "dev-main": "nodemon service_MainServer/mainServer.js",
+    "dev-auth": "nodemon service_AuthService/authService.js",
+    "dev-chat": "nodemon service_ChatService/chatService.js",
+    "dev-payment": "nodemon service_PaymentService/paymentService.js",
+    "dev-postgres": "nodemon service_PostgresDBService/postgresDBService.js",
+    "start-all": "concurrently \"npm run start-main\" \"npm run start-auth\" \"npm run start-chat\" \"npm run start-payment\" \"npm run start-postgres\"",
+    "dev-all": "concurrently \"npm run dev-main\" \"npm run dev-auth\" \"npm run dev-chat\" \"npm run dev-payment\" \"npm run dev-postgres\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "axios": "^1.8.3",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fastify": "^4.19.0",
+    "firebase": "^11.4.0",
+    "firebase-admin": "^13.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^5.7.0",
+    "pg": "^8.11.3",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.8.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^3.0.1"
+  }
+}
