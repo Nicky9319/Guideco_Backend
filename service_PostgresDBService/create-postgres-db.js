@@ -1,24 +1,42 @@
 const { Client } = require('pg');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
-// Database configuration
+// Database configuration - using environment variables from .env file
 const dbConfig = {
-    user: process.env.POSTGRES_USER || 'GuideCO',
-    host: process.env.POSTGRES_HOST || 'localhost',
-    database: process.env.POSTGRES_DB || 'GuideCO',
-    password: process.env.POSTGRES_PASSWORD || 'guideco',
-    port: process.env.POSTGRES_PORT || 5432,
+    user: process.env.POSTGRES_USER,
+    host: process.env.POSTGRES_HOST,
+    database: process.env.POSTGRES_DB,
+    password: process.env.POSTGRES_PASSWORD,
+    port: process.env.POSTGRES_PORT,
 };
 
 // Admin configuration for creating database if it doesn't exist
 const adminConfig = {
-    user: process.env.POSTGRES_USER || 'GuideCO',
-    host: process.env.POSTGRES_HOST || 'localhost',
+    user: process.env.POSTGRES_USER,
+    host: process.env.POSTGRES_HOST,
     database: 'postgres', // Connect to default postgres database
-    password: process.env.POSTGRES_PASSWORD || 'guideco',
-    port: process.env.POSTGRES_PORT || 5432,
+    password: process.env.POSTGRES_PASSWORD,
+    port: process.env.POSTGRES_PORT,
 };
+
+// Fallback configuration (commented out - now using .env file)
+// const dbConfig = {
+//     user: process.env.POSTGRES_USER || 'GuideCO',
+//     host: process.env.POSTGRES_HOST || 'localhost',
+//     database: process.env.POSTGRES_DB || 'GuideCO',
+//     password: process.env.POSTGRES_PASSWORD || 'guideco',
+//     port: process.env.POSTGRES_PORT || 5432,
+// };
+
+// const adminConfig = {
+//     user: process.env.POSTGRES_USER || 'GuideCO',
+//     host: process.env.POSTGRES_HOST || 'localhost',
+//     database: 'postgres', // Connect to default postgres database
+//     password: process.env.POSTGRES_PASSWORD || 'guideco',
+//     port: process.env.POSTGRES_PORT || 5432,
+// };
 
 /**
  * Creates the database if it doesn't exist
