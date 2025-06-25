@@ -15,7 +15,7 @@ sudo mkdir -p $TARGET_DIR
 sudo cp -r ./* $TARGET_DIR/
 
 # Change ownership (optional, but safer if other services access this folder)
-sudo chown -R prod:prod $TARGET_DIR
+sudo chown -R ubuntu:ubuntu $TARGET_DIR
 
 # Move into the target directory
 cd $TARGET_DIR
