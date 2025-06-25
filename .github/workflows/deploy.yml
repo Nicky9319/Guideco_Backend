@@ -32,11 +32,10 @@ jobs:
         run: sudo npm install -g pm2
 
       - name: Stop and Removing the PM2 Process
-        run: pm2 stop ecoride-backend || true && pm2 delete ecoride-backend || true
+        run: pm2 stop guideco || true && pm2 delete guideco || true
 
       - name: Running deployment script
         run: bash .github/scripts/deploy.sh
 
       - name: Echo the Environment variables
         run: echo "$ENVIRONMENTAL_VARIABLES"
-        
