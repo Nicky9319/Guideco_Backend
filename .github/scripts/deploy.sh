@@ -28,7 +28,12 @@ touch .env
 echo -e "$ENVIRONMENTAL_VARIABLES" > .env
 sed -i 's/\r//g' .env
 
-pm2 start "npm run dev" --name ecoride-backend
+# Making the logs Directory
+mkdir logs || rm -rf logs && mkdir logs
+
+pm2 stop all || echo "⚠️ PM2 stop failed, continuing..."
+pm2 flush
+pm2 start process.json
 
 sudo docker-compose down --volumes --remove-orphans || echo "⚠️ docker-compose down failed, continuing..."
 sudo docker-compose up -d 
