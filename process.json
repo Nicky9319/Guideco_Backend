@@ -1,0 +1,20 @@
+{
+    "apps": [
+        {
+            "name": "postgresdb",
+            "script": "./service_PostgresDBService/postgres-db-service.js",
+            "out_file": "./logs/postgres-db-service-out.log",
+            "error_file": "./logs/postgres-db-service-error.log",
+            "merge_logs": true,
+            "namespace": "guideco"
+        },
+        {
+            "name": "websocket",
+            "script": "./service_WebSocketService/web-socket-service.js",
+            "out_file": "./logs/web-socket-service-out.log",
+            "error_file": "./logs/web-socket-service-error.log",
+            "merge_logs": true,
+            "namespace": "guideco"
+        }
+    ]
+}

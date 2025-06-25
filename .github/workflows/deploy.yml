@@ -1,0 +1,33 @@
+on:
+  pull_request:
+    branches:
+      - prod
+    
+jobs:
+  deploy:
+    if: github.head_ref == 'new-arch'
+    runs-on: [self-hosted,Linux,X64]
+    environment: production
+    env:
+      ENVIRONMENTAL_VARIABLES: ${{ vars.ENVIRONMENTAL_VARIABLES }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install PM2
+        run: sudo npm install -g pm2
+
+      - name: Stop and Removing the PM2 Process
+        run: pm2 stop ecoride-backend || true && pm2 delete ecoride-backend || true
+
+      - name: Running deployment script
+        run: bash .github/scripts/deploy.sh
+
+      - name: Echo the Environment variables
+        run: echo "$ENVIRONMENTAL_VARIABLES"
