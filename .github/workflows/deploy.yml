@@ -1,13 +1,21 @@
 on:
+  push:
+    branches:
+      - prod
   pull_request:
     branches:
       - prod
     
 jobs:
   deploy:
-    if: github.head_ref == 'new-arch'
+    if: |
+      (github.event_name == 'pull_request' && github.head_ref == 'python') ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/prod')
+
     runs-on: [self-hosted,Linux,X64]
+
     environment: production
+    
     env:
       ENVIRONMENTAL_VARIABLES: ${{ vars.ENVIRONMENTAL_VARIABLES }}
 
