@@ -29,7 +29,7 @@ echo -e "$ENVIRONMENTAL_VARIABLES" > .env
 sed -i 's/\r//g' .env
 
 # Making the logs Directory
-mkdir logs || rm -rf logs && mkdir logs
+mkdir -p logs
 
 pm2 stop all || echo "⚠️ PM2 stop failed, continuing..."
 pm2 flush
