@@ -1,6 +1,7 @@
 {
   "name": "guide-co-project",
   "version": "1.0.0",
+  "type": "module",
   "description": "Microservices Server Template",
   "main": "index.js",
   "scripts": {

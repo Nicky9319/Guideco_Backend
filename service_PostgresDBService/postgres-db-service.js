@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 
 // Main entry point
 function startService() {
+    console.log("Starting PostgreSQL DB Service...");
     const dataClass = new Data();
 
     const httpServerPort = 20000;
@@ -24,7 +25,14 @@ function startService() {
     service.startService();
 }
 
-// ES6 equivalent of require.main === module
-if (import.meta.url === `file://${fileURLToPath(import.meta.url)}` && process.argv[1] === fileURLToPath(import.meta.url)) {
+// Start the service when this file is run directly or through PM2
+// PM2 uses ProcessContainerFork.js as argv[1], so we check for that too
+const isMainModule = import.meta.url === `file://${process.argv[1]}` || 
+                     process.argv[1].includes('ProcessContainerFork.js');
+
+if (isMainModule) {
+    console.log("Starting service...");
     startService();
+} else {
+    console.log("Module imported, not starting service");
 }
