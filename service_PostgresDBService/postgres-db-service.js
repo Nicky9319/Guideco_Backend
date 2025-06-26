@@ -36,3 +36,4 @@ if (isMainModule) {
 } else {
     console.log("Module imported, not starting service");
 }
+
